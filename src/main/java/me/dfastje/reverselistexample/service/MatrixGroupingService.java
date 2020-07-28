@@ -3,8 +3,6 @@ package me.dfastje.reverselistexample.service;
 import me.dfastje.reverselistexample.DataVector;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
