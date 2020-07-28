@@ -59,9 +59,9 @@ class MatrixGroupingServiceTest {
 
     @Test
     void countIslandsTest(){
-        Assertions.assertEquals( matrixGroupingService.countIslands(geographicMatrix_5x5) , 6 );
-        Assertions.assertEquals( matrixGroupingService.countIslands(geographicMatrix_2x2) , 1 );
-        Assertions.assertEquals( matrixGroupingService.countIslands(geographicMatrix_2x5) , 3 );
+        Assertions.assertEquals( 6, matrixGroupingService.countIslands(geographicMatrix_5x5) );
+        Assertions.assertEquals( 1, matrixGroupingService.countIslands(geographicMatrix_2x2) );
+        Assertions.assertEquals( 3, matrixGroupingService.countIslands(geographicMatrix_2x5) );
     }
 
 }
