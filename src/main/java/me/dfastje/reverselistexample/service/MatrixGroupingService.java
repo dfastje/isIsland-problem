@@ -8,10 +8,13 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Note that the default behavior of spring beans is Singleton. This class would not be parallel safe otherwise (without code updates)
+ */
 @Service
 public class MatrixGroupingService {
 
-    //Reference information
+    //Reference information. Reset on each call to MatrixGroupingService.countIslands
     private boolean[][] locationCheckedMatrix;
     private boolean[][] geographicMatrix;
     private DataVector maxSizeVector;
@@ -41,6 +44,13 @@ public class MatrixGroupingService {
         return numIslandsFound;
     }
 
+    /**
+     * Method used to recursively check if land exists and mark locations that have already been searched
+     *
+     * This would be a prime refactoring candidate if the problem were not time-boxed
+     * @param location
+     * @return
+     */
     private int checkForLand(DataVector location){
         int newLandFound = 0;
         boolean hasLocationBeenChecked = locationCheckedMatrix[ location.getY() ][ location.getX() ];
@@ -59,6 +69,9 @@ public class MatrixGroupingService {
     }
 
     /**
+     * This is a very specific solution for only this problem.
+     *
+     * I personally don't like using switch statements unless there is a REALLY large number of cases
      *
      * @param initialVector
      * @return
@@ -88,6 +101,14 @@ public class MatrixGroupingService {
         return vectorList;
     }
 
+    /**
+     * Simple helper method to verify that a given location vector is valid
+     *
+     * Our definition of a valid vector here is a vector starting from (0,0) with neither component larger than
+     *      the maximum size of our Geographical Matrix
+     * @param location
+     * @return
+     */
     private boolean isValidLocation(DataVector location){
         if( 0 > location.getX() ) {
             return false;
